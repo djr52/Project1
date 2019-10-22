@@ -1,11 +1,5 @@
 
 <?php
-//CRUD
-/* Create = POST = INSERT
-* Read = GET = SELECT
-* Update = PUT = UPDATE
-* Delete = DELETE = DELETE
-*/
 
     $emailAddress = $_POST['email'];
     if(empty($emailAddress)){
