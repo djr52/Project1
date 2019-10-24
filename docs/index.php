@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <link href="index.php">
+</head>
+<body>
+
+<h1>Henlo</h1>
+
+</body>
+</html>
+
+
+
+
 
 <?php
 
@@ -16,5 +35,5 @@
     }
 
 
-
+?>
 
