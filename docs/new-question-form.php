@@ -29,7 +29,7 @@ else{
 if(count($skills) < 2){
     echo nl2br("Please enter at least 2 skills\n");
 }
+else{
+    echo nl2br($skillsString);
+}
 
-
-
-echo $skillsString;
