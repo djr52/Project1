@@ -8,33 +8,48 @@
 
 <h1>Enter your question down below</h1>
 <form action="new-question-form.php" method="post" name="new-question-form">
-    Question title<input type="text" name="questionName">
+    Question title <input type="text" name="questionName">
     <br>
     <br>
-    Enter your question:<br><textarea name="questionBody"> </textarea>
+    Enter your question:<br><textarea name="questionBody"></textarea>
     <br>
     Question Skills
     <br>
     <br>
 
-    <label>PHP</label>
-    <input type="checkbox" name="qSkills">
+
+    <div>
+        <input type="checkbox" name="skills[]" value="PHP" id="php" checked>
+        <label for="php">PHP</label>
+        <br>
+
+        <input type="checkbox" name="skills[]" value="Javascript" id="js">
+        <label for="js">Javascript</label>
+
+        <br>
+
+        <input type="checkbox" name="skills[]" value="CSS" id="css">
+        <label for="css">CSS</label>
+
+        <br>
+
+        <input type="checkbox" name="skills[]" value="HTML" id="html">
+        <label for="html">HTML</label>
+
+        <br>
+
+        <input type="checkbox" name="skills[]" value="Java" id="java">
+        <label for="java">Java</label>
+
+        <br>
+
+        <input type="checkbox" name="skills[]" value="Python" id="py">
+        <label for="py">Python</label>
+        <br>
+    </div>
+
     <br>
-    <label>Javascript</label>
-    <input type="checkbox" name="qSkills">
-    <br>
-    <label>CSS</label>
-    <input type="checkbox" name="qSkills">
-    <br>
-    <label>HTML</label>
-    <input type="checkbox" name="qSkills">
-    <br>
-    <label>Java</label>
-    <input type="checkbox" name="qSkills">
-    <br>
-    <label>Python</label>
-    <input type="checkbox" name="qSkills">
-    <br>
+    <input type="submit" value="Post">
 
 </form>
 
