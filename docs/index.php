@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<h1>Henlo</h1>
+<h1>Hello</h1>
 
 </body>
 </html>
@@ -24,9 +24,12 @@
     if(empty($emailAddress)){
         echo "Please enter your E-mail";
     }
-    if(!strpos($emailAddress, '@')){
+    elseif(!strpos($emailAddress, '@')){
 
         echo nl2br("\nPlease type a proper email address.") ;
+    }
+    else{
+        echo($emailAddress);
     }
 
     $password = $_POST['password'];
