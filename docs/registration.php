@@ -1,11 +1,14 @@
 <?php
 
+require('database.php');
+
 
 $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $birthDay = $_POST['birthDay'];
 $emailAddress = $_POST['emailAddress'];
 $password = $_POST['password'];
+
 
 
 if(empty($firstName)){
@@ -32,8 +35,30 @@ if(!strpos($emailAddress, '@')){
 if(empty($password) || strlen($password) < 8){
     echo nl2br("\nPlease enter a valid password. \n(Must be at least 8 characters long.)");
 }
-else{
-    echo nl2br("\nWelcome ".$firstName." ".$lastName."\n");
-    echo nl2br($birthDay."\n");
-    echo nl2br($emailAddress."\n");
+
+
+
+
+else {
+    echo nl2br("\nWelcome " . $firstName . " " . $lastName . "\n");
+    echo nl2br($birthDay . "\n");
+    echo nl2br($emailAddress . "\n");
+
+
+    $query = 'INSERT INTO accounts
+            (email, fname, lname, birthday, password)
+          VALUES
+            (:email, :fname, :lname, :birthday, :password)';
+
+    $statement = $db->prepare($query);
+
+    $statement->bindValue(':email', $emailAddress);
+    $statement->bindValue(':fname', $firstName);
+    $statement->bindValue(':lname', $lastName);
+    $statement->bindValue(':birthday', $birthDay);
+    $statement->bindValue(':password', $password);
+
+    $statement->execute();
+
+    $statement->closeCursor();
 }

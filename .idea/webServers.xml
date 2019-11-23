@@ -2,13 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="68695c93-5816-42c0-b5b5-01369f8e5fdc" name="NJIT AFS" url="http://afsconnect1.njit.edu">
-        <fileTransfer host="afsconnect1.njit.edu" port="22" rootFolder="/afs/cad.njit.edu/u/d/j/djr52" accessType="SFTP">
-          <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
-          </advancedOptions>
-          <option name="port" value="22" />
-        </fileTransfer>
+      <webServer id="a4bebb36-b67e-41bc-a3ff-68e3f7d1a99b" name="Local" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="C:\Users\djram\PhpstormProjects\Project1" accessType="MOUNT" />
       </webServer>
     </option>
   </component>

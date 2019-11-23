@@ -1,8 +1,10 @@
 <?php
+require('database.php');
 //Declaring variables
 $questionName = $_POST['questionName'];
 $questionBody = $_POST['questionBody'];
 $skills = $_POST['skills'];
+//$dateTime = new DateTime()
 
 //Turns skill array into string
 $skillsString = implode($skills, ', ');
@@ -31,5 +33,23 @@ if(count($skills) < 2){
 }
 else{
     echo nl2br($skillsString);
+
+    $query = 'INSERT INTO questions
+            (title, body, skills)
+            VALUES
+            (:title, :body, :skills) ';
+    $statement = $db->prepare($query);
+
+    $statement->bindValue(':title', $questionName);
+    $statement->bindValue(':body', $questionBody);
+    $statement->bindValue(':skills', $skillsString);
+
+    $statement->execute();
+    $statement->closeCursor();
+
+
+
+
+
 }
 
