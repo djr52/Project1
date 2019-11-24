@@ -1,10 +1,14 @@
 <?php
-require('database.php');
+require('model/database.php');
+require('model/accounts.php');
 //Declaring variables
 $questionName = $_POST['questionName'];
 $questionBody = $_POST['questionBody'];
 $skills = $_POST['skills'];
-//$dateTime = new DateTime()
+
+session_start();
+$emailAddress = $_SESSION['email'];
+
 
 //Turns skill array into string
 $skillsString = implode($skills, ', ');
@@ -34,12 +38,14 @@ if(count($skills) < 2){
 else{
     echo nl2br($skillsString);
 
+
     $query = 'INSERT INTO questions
-            (title, body, skills)
+            (owneremail, title, body, skills)
             VALUES
-            (:title, :body, :skills) ';
+            (:email, :title, :body, :skills) ';
     $statement = $db->prepare($query);
 
+    $statement->bindValue(':email', $emailAddress);
     $statement->bindValue(':title', $questionName);
     $statement->bindValue(':body', $questionBody);
     $statement->bindValue(':skills', $skillsString);

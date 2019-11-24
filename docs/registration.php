@@ -1,6 +1,6 @@
 <?php
 
-require('database.php');
+require('model/database.php');
 
 
 $firstName = $_POST['firstName'];
@@ -40,10 +40,6 @@ if(empty($password) || strlen($password) < 8){
 
 
 else {
-    echo nl2br("\nWelcome " . $firstName . " " . $lastName . "\n");
-    echo nl2br($birthDay . "\n");
-    echo nl2br($emailAddress . "\n");
-
 
     $query = 'INSERT INTO accounts
             (email, fname, lname, birthday, password)
@@ -61,4 +57,7 @@ else {
     $statement->execute();
 
     $statement->closeCursor();
+
+    header("Location: login.html");
+
 }
