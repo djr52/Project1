@@ -4,3 +4,48 @@ ul#navigation-bar li{
 
 
 }
+table,th,td{
+    border:1px solid black;
+    border-radius: 3px;
+    text-align: center;
+}
+.table{
+    margin: 0px auto;
+
+}
+.button-display{
+    text-align: center;
+    display: inline;
+
+}
+.display-question-body{
+    text-align: center;
+}
+h1{
+    font-family: "Helvetica";
+}
+form{
+    font-family: Helvetica;
+}
+.text-container{
+    border: 1px solid #bfbfbf;
+    border-radius: 10px;
+}
+.button{
+    border-radius: 5px;
+    padding: 10px 24px;
+
+}
+.add-question-button{
+    margin-top:15px;
+    border-radius: 5px;
+    padding: 10px 24px;
+}
+.login-container{
+    text-align: center;
+    display: inline;
+}
+.display-question-container{
+    text-align: center;
+    display: inline;
+}
