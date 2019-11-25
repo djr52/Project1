@@ -36,7 +36,7 @@ if(count($skills) < 2){
     echo nl2br("Please enter at least 2 skills\n");
 }
 else{
-    echo nl2br($skillsString);
+
 
 
     $query = 'INSERT INTO questions
@@ -51,7 +51,12 @@ else{
     $statement->bindValue(':skills', $skillsString);
 
     $statement->execute();
+    $firstName = getFirstName($emailAddress);
+    $lastName = getLastName($emailAddress);
+
     $statement->closeCursor();
+
+    header("Location: display-user-question.php?email=$emailAddress&firstname=$firstName&lastname=$lastName");
 
 
 

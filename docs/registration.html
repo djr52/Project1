@@ -14,26 +14,44 @@
     </ul>
 </div>
 
-<h1>Please register an account down below.</h1>
-
-<form action="registration.php" method="post" name="register-page">
-
-    First Name: <input type="text" name="firstName">
-    <br/>
-    Last Name: <input type="text" name="lastName">
-    <br>
-    Birthday: <input type="text" name="birthDay">
-    <br>
-    Email Address: <input type="email" name="emailAddress">
-    <br>
-    Password: <input type="password" name="password">
-    <br>
-    <input type="submit" value="Register">
+<div class="div-container">
+    <h1>Please register an account down below.</h1>
 
 
+    <form action="registration.php" method="post" name="register-page">
+        <div>
+            First Name: <input type="text" name="firstName" class="text-container">
+        </div>
+
+        <br/>
+        <div>
+            Last Name: <input type="text" name="lastName" class="text-container">
+        </div>
+
+        <br>
+        <div>
+            Birthday: <input type="text" name="birthDay" class="text-container">
+        </div>
+
+        <br>
+        <div>
+            Email Address: <input type="email" name="emailAddress" class="text-container">
+        </div>
+
+        <br>
+        <div>
+            Password: <input type="password" name="password" class="text-container">
+        </div>
+
+        <br>
+        <input type="submit" value="Register" class="button">
 
 
-</form>
+
+
+    </form>
+</div>
+
 
 </body>
 </html>

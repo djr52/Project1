@@ -28,3 +28,29 @@ function validateLogin($emailAddress, $password)
 
     }
 }
+function getFirstName($emailAddress){
+    global $db;
+    $query = 'SELECT fname FROM accounts WHERE
+                    email = :email';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':email', $emailAddress);
+
+    $statement->execute();
+    $name = $statement->fetch();
+
+    $firstName = $name['fname'];
+    return $firstName;
+}
+function getLastName($emailAddress){
+    global $db;
+    $query = 'SELECT lname FROM accounts WHERE
+                    email = :email';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':email', $emailAddress);
+
+    $statement->execute();
+    $name = $statement->fetch();
+
+    $lastName = $name['lname'];
+    return $lastName;
+}

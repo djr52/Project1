@@ -27,7 +27,7 @@ $_SESSION['email'] = $emailAddress;
     <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
 <body class="display-question-body">
-<div class="display-question-container">
+<div class="div-container">
     <div>
 
         <h1><?php echo $firstName . " " . $lastName . "'s"; ?> Posted Questions</h1>
