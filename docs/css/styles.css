@@ -4,6 +4,16 @@ ul#navigation-bar li{
 
 
 }
+.login-container{
+    text-align: center;
+    display: inline;
+
+
+}
+
+body{
+    background-color: ivory;
+}
 table,th,td{
     border:1px solid black;
     border-radius: 3px;
@@ -41,10 +51,7 @@ form{
     border-radius: 5px;
     padding: 10px 24px;
 }
-.login-container{
-    text-align: center;
-    display: inline;
-}
+
 .display-question-container{
     text-align: center;
     display: inline;

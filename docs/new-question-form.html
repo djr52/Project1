@@ -6,59 +6,65 @@
     <title>Title</title>
 </head>
 <body>
+
 <div>
     <ul id="navigation-bar">
-        <li><a href="login.html">Login</a></li>
+        <li><a href="login.html">Logout</a></li>
         <li><a href="registration.html">Registration</a></li>
         <li><a href="new-question-form.html">Question Form</a></li>
     </ul>
 </div>
+
 <h1>Enter your question down below</h1>
-<form action="new-question-form.php" method="post" name="new-question-form">
-    Question title <input type="text" name="questionName">
-    <br>
-    <br>
-    Enter your question:<br><textarea name="questionBody"></textarea>
-    <br>
-    Question Skills
-    <br>
-    <br>
 
-
-    <div>
-        <input type="checkbox" name="skills[]" value="PHP" id="php" checked>
-        <label for="php">PHP</label>
+<div>
+    <form action="new-question-form.php" method="post" name="new-question-form">
+        Question Title <input type="text" name="questionName" class="text-container">
+        <br>
+        <br>
+        Enter your question:<br><textarea name="questionBody" class="text-container"></textarea>
+        <br>
+        Question Skills
+        <br>
         <br>
 
-        <input type="checkbox" name="skills[]" value="Javascript" id="js">
-        <label for="js">Javascript</label>
+
+        <div>
+            <input type="checkbox" name="skills[]" value="PHP" id="php" checked>
+            <label for="php">PHP</label>
+            <br>
+
+            <input type="checkbox" name="skills[]" value="Javascript" id="js">
+            <label for="js">Javascript</label>
+
+            <br>
+
+            <input type="checkbox" name="skills[]" value="CSS" id="css">
+            <label for="css">CSS</label>
+
+            <br>
+
+            <input type="checkbox" name="skills[]" value="HTML" id="html">
+            <label for="html">HTML</label>
+
+            <br>
+
+            <input type="checkbox" name="skills[]" value="Java" id="java">
+            <label for="java">Java</label>
+
+            <br>
+
+            <input type="checkbox" name="skills[]" value="Python" id="py">
+            <label for="py">Python</label>
+            <br>
+        </div>
 
         <br>
+        <input type="submit" value="Post" class="button">
 
-        <input type="checkbox" name="skills[]" value="CSS" id="css">
-        <label for="css">CSS</label>
+    </form>
+</div>
 
-        <br>
-
-        <input type="checkbox" name="skills[]" value="HTML" id="html">
-        <label for="html">HTML</label>
-
-        <br>
-
-        <input type="checkbox" name="skills[]" value="Java" id="java">
-        <label for="java">Java</label>
-
-        <br>
-
-        <input type="checkbox" name="skills[]" value="Python" id="py">
-        <label for="py">Python</label>
-        <br>
-    </div>
-
-    <br>
-    <input type="submit" value="Post">
-
-</form>
 
 
 </body>
