@@ -2,7 +2,8 @@
 
 
 <?php
-require('model/database.php');
+/*
+require('docs/model/database.php');
 require('model/accounts.php');
 require('model/questions.php');
 
@@ -14,7 +15,7 @@ session_start();
 
 $_SESSION['email'] = $emailAddress;
 
-
+*/
 
 
 
@@ -32,6 +33,7 @@ $_SESSION['email'] = $emailAddress;
 
         <h1><?php echo $firstName . " " . $lastName . "'s"; ?> Posted Questions</h1>
 
+
     </div>
     <div>
         <table class="table">
@@ -40,7 +42,6 @@ $_SESSION['email'] = $emailAddress;
                 <th>Question Title</th>
                 <th>Question Body</th>
             </tr>
-            <?php $questions = getQuestionsByEmail($emailAddress); ?>
             <?php foreach ($questions as $question) : ?>
                 <tr>
                     <td><?php echo $question['owneremail'] ?></td>
@@ -54,7 +55,7 @@ $_SESSION['email'] = $emailAddress;
 
     </div>
     <div class="button-display">
-        <a href="new-question-form.html"><input type="button" value="Add New Question" class="add-question-button"></a>
+        <a href=".?action=display_question_form&userEmail=<?php echo $userEmail?>"><input type="button" value="Add New Question" class="add-question-button"></a>
     </div>
 </div>
 

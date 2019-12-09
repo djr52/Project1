@@ -28,6 +28,26 @@ function validateLogin($emailAddress, $password)
 
     }
 }
+function createNewUser($emailAddress, $firstName, $lastName, $birthDay, $password){
+    global $db;
+    $query = 'INSERT INTO accounts
+            (email, fname, lname, birthday, password)
+          VALUES
+            (:email, :fname, :lname, :birthday, :password)';
+
+    $statement = $db->prepare($query);
+
+    $statement->bindValue(':email', $emailAddress);
+    $statement->bindValue(':fname', $firstName);
+    $statement->bindValue(':lname', $lastName);
+    $statement->bindValue(':birthday', $birthDay);
+    $statement->bindValue(':password', $password);
+
+    $statement->execute();
+
+    $statement->closeCursor();
+
+}
 function getFirstName($emailAddress){
     global $db;
     $query = 'SELECT fname FROM accounts WHERE

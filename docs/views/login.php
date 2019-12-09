@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
-    <link href="views/login.php">
-</head>
-<body>
+
+<?php include('abstract-views/header.php');  ?>
+
 
 <div class="div-container">
     <h1>Hello! Please log in to your account</h1>
 
-    <form action="views/login.php" method="post" name="login-page">
+    <form action="index.php" method="post" name="login-page">
         <input type="hidden" name="action" value="validate_login">
 
         <div class="input-container">
@@ -33,6 +27,6 @@
     </form>
 </div>
 
+<?php include('abstract-views/footer.php');?>
 
-</body>
-</html>
+
