@@ -4,7 +4,7 @@ require("model/accounts.php");
 require("model/questions.php");
 
 $action = filter_input(INPUT_POST, 'action');
-
+//session_start();
 if($action == NULL){
     $action = filter_input(INPUT_GET, 'action');
     if($action == NULL){
@@ -37,6 +37,10 @@ switch($action){
     }
 
     case 'display_registration':{
+        include('views/registration.php');
+        break;
+    }
+    case 'create_registration':{
         $emailAddress = filter_input(INPUT_POST, 'emailAddress');
         $password = filter_input(INPUT_POST, 'password');
         $firstName = filter_input(INPUT_POST, 'firstName');
@@ -51,12 +55,6 @@ switch($action){
             createNewUser($emailAddress,$firstName,$lastName,$birthDay,$password);
             header("Location: .?action=display_login");
         }
-
-
-        include('views/registration.php');
-
-
-        break;
 
     }
     case 'display_questions':{
@@ -77,33 +75,36 @@ switch($action){
 
     case 'display_question_form':{
         $userEmail = filter_input(INPUT_GET, 'userEmail');
+
+        session_start();
+        $_SESSION['userEmail'] = $userEmail;
         include('views/new-question-form.php');
+        break;
+    }
+    case 'create_new_question':{
+        session_start();
+        $userEmail = $_SESSION['userEmail'];
+
+        //$userEmail = filter_input(INPUT_GET, 'userEmail');
         $questionName = filter_input(INPUT_POST, 'questionName');
         $questionBody = filter_input(INPUT_POST, 'questionBody');
         $skills = filter_input(INPUT_POST, 'skills');
-
-
-
-
         //Turn array into string
         $skillsString = implode($skills, ', ');
-
-        if($questionName == NULL || $questionBody == NULL)
+        if($questionName == NULL || ($questionBody == NULL || strlen($questionBody) > 500) || count($skills) < 2)
         {
             $error = "Please fill out the areas, select at least 2 skills, and keep the body under 500 characters";
             echo $error;
-
         }
         else{
-
-            createNewQuestion($userEmail, $questionName,$questionBody,$skillsString);
+            createNewQuestion($userEmail, $questionName, $questionBody, $skillsString);
             header("Location: .?action=display_questions&userEmail=$userEmail");
 
         }
 
-
-
+        break;
 
     }
+
 
 }

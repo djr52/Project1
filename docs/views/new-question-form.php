@@ -71,7 +71,7 @@ else{
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/styles.css?v=1.0">
-    <title></title>
+    <title>IS 218</title>
 </head>
 <body>
 
@@ -81,7 +81,8 @@ else{
 
 <div>
     <form action="index.php" method="post" name="new-question-form">
-        <input type="hidden" name="action" value="display_question_form">
+        <input type="hidden" name="action" value="create_new_question">
+
         Question Title <input type="text" name="questionName" class="text-container">
         <br>
         <br>
@@ -122,10 +123,13 @@ else{
             <br>
         </div>
 
+
+
         <br>
-        <a href=".?action=display_questions$userEmail=<?php echo $userEmail?>"><input type="submit" value="Post" class="button"><a/>
+        <a href=".?action=display_questions&userEmail=<?php echo $userEmail; ?>"><input type="submit" value="Add" class="button"></a>
 
     </form>
+
 </div>
 
 

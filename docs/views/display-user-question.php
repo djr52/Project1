@@ -24,7 +24,7 @@ $_SESSION['email'] = $emailAddress;
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>IS 218</title>
     <link rel="stylesheet" href="css/styles.css?v=1.0">
 </head>
 <body class="display-question-body">
@@ -55,7 +55,7 @@ $_SESSION['email'] = $emailAddress;
 
     </div>
     <div class="button-display">
-        <a href=".?action=display_question_form&userEmail=<?php echo $userEmail?>"><input type="button" value="Add New Question" class="add-question-button"></a>
+        <a href=".?action=display_question_form&userEmail=<?php echo $userEmail;?>"><input type="button" value="Add New Question" class="add-question-button"></a>
     </div>
 </div>
 

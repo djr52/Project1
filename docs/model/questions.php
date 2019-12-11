@@ -32,5 +32,6 @@ function createNewQuestion($emailAddress, $questionName, $questionBody, $skillsS
     //$lastName = getLastName($emailAddress);
 
     $statement->closeCursor();
+    //return $emailAddress;
 
 }
