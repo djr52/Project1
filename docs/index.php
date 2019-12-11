@@ -55,6 +55,7 @@ switch($action){
             createNewUser($emailAddress,$firstName,$lastName,$birthDay,$password);
             header("Location: .?action=display_login");
         }
+        break;
 
     }
     case 'display_questions':{
