@@ -86,20 +86,25 @@ switch($action){
         session_start();
         $userEmail = $_SESSION['userEmail'];
 
-        //$userEmail = filter_input(INPUT_GET, 'userEmail');
+
         $questionName = filter_input(INPUT_POST, 'questionName');
         $questionBody = filter_input(INPUT_POST, 'questionBody');
-        $skills = filter_input(INPUT_POST, 'skills');
+        $skills = filter_input(INPUT_POST, 'skills',
+            FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
         //Turn array into string
         $skillsString = implode($skills, ', ');
+
+        echo $skillsString;
+        echo $questionBody;
+
         if($questionName == NULL || ($questionBody == NULL || strlen($questionBody) > 500) || count($skills) < 2)
         {
-            $error = "Please fill out the areas, select at least 2 skills, and keep the body under 500 characters";
-            echo $error;
+           $error = "Please fill out the areas, select at least 2 skills, and keep the body under 500 characters";
+           echo $error;
         }
         else{
-            createNewQuestion($userEmail, $questionName, $questionBody, $skillsString);
-            header("Location: .?action=display_questions&userEmail=$userEmail");
+           createNewQuestion($userEmail, $questionName, $questionBody, $skillsString);
+           header("Location: .?action=display_questions&userEmail=$userEmail");
 
         }
 
