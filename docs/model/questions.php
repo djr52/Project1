@@ -45,3 +45,20 @@ function deleteQuestion($questionID){
 
     $statement->closeCursor();
 }
+
+function getOneQuestion($questionID){
+    global $db;
+    $query = 'SELECT FROM questions
+                WHERE id = :questionID';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':questionID', $questionID);
+    $statement->execute();
+
+    $question = $statement->fetch();
+
+    $statement->closeCursor();
+
+
+    return $question;
+
+}
