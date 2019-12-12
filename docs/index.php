@@ -59,7 +59,11 @@ switch($action){
 
     }
     case 'display_questions':{
+        session_start();
+
         $userEmail = filter_input(INPUT_GET, 'userEmail');
+        $_SESSION['displayEmail'] = $userEmail;
+
         if($userEmail == NULL || $userEmail < 0){
             header('.?action=display_login');
         }
@@ -68,9 +72,33 @@ switch($action){
             $firstName = getFirstName($userEmail);
             $lastName = getLastName($userEmail);
             include('views/display-user-question.php');
+
         }
 
         break;
+
+    }
+    case 'delete_question':{
+
+        session_start();
+        $userEmail = $_SESSION['displayEmail'];
+
+        $questionID = filter_input(INPUT_GET, 'questionID');
+        $questions = getQuestionsByEmail($userEmail);
+        foreach($questions as $question){
+            if($question['id'] == $questionID){
+                deleteQuestion($questionID);
+                header("Location: .?action=display_questions&userEmail=$userEmail");
+            }
+            else{
+                echo "error";
+            }
+
+        }
+        break;
+
+
+
 
     }
 
@@ -94,8 +122,6 @@ switch($action){
         //Turn array into string
         $skillsString = implode($skills, ', ');
 
-        echo $skillsString;
-        echo $questionBody;
 
         if($questionName == NULL || ($questionBody == NULL || strlen($questionBody) > 500) || count($skills) < 2)
         {

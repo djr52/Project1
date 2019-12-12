@@ -74,3 +74,4 @@ function getLastName($emailAddress){
     $lastName = $name['lname'];
     return $lastName;
 }
+

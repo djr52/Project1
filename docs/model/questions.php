@@ -35,3 +35,13 @@ function createNewQuestion($emailAddress, $questionName, $questionBody, $skillsS
     //return $emailAddress;
 
 }
+function deleteQuestion($questionID){
+    global $db;
+    $query = 'DELETE FROM questions
+                WHERE id = :questionID';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':questionID', $questionID);
+    $statement->execute();
+
+    $statement->closeCursor();
+}

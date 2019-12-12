@@ -126,7 +126,7 @@ else{
 
 
         <br>
-        <a href=".?action=display_questions&userEmail=<?php echo $userEmail; ?>"><input type="submit" value="Add" class="button"></a>
+        <input type="submit" value="Add" class="button">
 
     </form>
 

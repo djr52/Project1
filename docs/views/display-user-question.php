@@ -38,18 +38,22 @@ $_SESSION['email'] = $emailAddress;
     <div>
         <table class="table">
             <tr>
-                <th>Email</th>
+                <th>Question ID</th>
                 <th>Question Title</th>
                 <th>Question Body</th>
+                <th>Question Skills</th>
             </tr>
             <?php foreach ($questions as $question) : ?>
                 <tr>
-                    <td><?php echo $question['owneremail'] ?></td>
+                    <td><?php echo $question['id'] ?></td>
                     <td><?php echo $question['title'] ?></td>
                     <td><?php echo $question['body'] ?></td>
+                    <td><?php echo $question['skills']?></td>
+                    <td><a href=".?action=delete_question&questionID=<?php echo $question['id']?>"><input type="button" value="Delete"></a></td>
                 </tr>
 
-            <?php endforeach;  ?>
+
+            <?php endforeach;?>
         </table>
 
 
