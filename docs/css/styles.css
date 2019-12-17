@@ -10,6 +10,9 @@ ul#navigation-bar li{
 
 
 }
+.title-header{
+    margin-top: 8px;
+}
 
 body{
     background-color: ivory;
@@ -43,7 +46,7 @@ form{
 }
 .button{
     border-radius: 5px;
-    padding: 10px 24px;
+    padding: 5px 15px;
 
 }
 .add-question-button{

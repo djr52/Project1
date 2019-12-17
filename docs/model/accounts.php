@@ -48,30 +48,17 @@ function createNewUser($emailAddress, $firstName, $lastName, $birthDay, $passwor
     $statement->closeCursor();
 
 }
-function getFirstName($emailAddress){
+
+function getFullName($emailAddress){
     global $db;
-    $query = 'SELECT fname FROM accounts WHERE
+    $query = 'SELECT fname, lname FROM accounts WHERE
                     email = :email';
     $statement = $db->prepare($query);
     $statement->bindValue(':email', $emailAddress);
 
     $statement->execute();
     $name = $statement->fetch();
+    $fullName = array($name['fname'], $name['lname']);
 
-    $firstName = $name['fname'];
-    return $firstName;
+    return $fullName;
 }
-function getLastName($emailAddress){
-    global $db;
-    $query = 'SELECT lname FROM accounts WHERE
-                    email = :email';
-    $statement = $db->prepare($query);
-    $statement->bindValue(':email', $emailAddress);
-
-    $statement->execute();
-    $name = $statement->fetch();
-
-    $lastName = $name['lname'];
-    return $lastName;
-}
-

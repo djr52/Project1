@@ -4,7 +4,9 @@ require("model/accounts.php");
 require("model/questions.php");
 
 $action = filter_input(INPUT_POST, 'action');
-//session_start();
+
+
+session_start();
 if($action == NULL){
     $action = filter_input(INPUT_GET, 'action');
     if($action == NULL){
@@ -26,11 +28,12 @@ switch($action){
             echo $error;
         } else {
             $userEmail = validateLogin($emailAddress, $password);
-            echo "User email IS: $userEmail";
             if ($userEmail == false) {
                 header("Location: .?action=display_registration");
             } else {
-                header("Location: .?action=display_questions&userEmail=$userEmail");
+
+                setcookie('login', $userEmail, time() + (7200), "/");
+                header("Location: .?action=display_questions");
             }
         }
         break;
@@ -59,18 +62,14 @@ switch($action){
 
     }
     case 'display_questions':{
-        session_start();
 
-        $userEmail = filter_input(INPUT_GET, 'userEmail');
-        $_SESSION['displayEmail'] = $userEmail;
-
+        $userEmail = $_COOKIE['login'];
         if($userEmail == NULL || $userEmail < 0){
             header('.?action=display_login');
         }
         else{
             $questions = getQuestionsByEmail($userEmail);
-            $firstName = getFirstName($userEmail);
-            $lastName = getLastName($userEmail);
+            $fullName = getFullName($userEmail);
             include('views/display-user-question.php');
 
         }
@@ -78,17 +77,23 @@ switch($action){
         break;
 
     }
+    case 'all_questions':{
+        $questions = getAllQuestions();
+
+        include('views/display-all-questions.php');
+        break;
+    }
     case 'delete_question':{
 
-        session_start();
-        $userEmail = $_SESSION['displayEmail'];
+        //session_start();
+        $userEmail = $_COOKIE['login'];
 
         $questionID = filter_input(INPUT_GET, 'questionID');
         $questions = getQuestionsByEmail($userEmail);
         foreach($questions as $question){
             if($question['id'] == $questionID){
                 deleteQuestion($questionID);
-                header("Location: .?action=display_questions&userEmail=$userEmail");
+                header("Location: .?action=display_questions");
             }
             else{
                 echo "error";
@@ -96,23 +101,22 @@ switch($action){
 
         }
         break;
+    }
+    case 'view_question':{
+        $questionID = filter_input(INPUT_GET, 'questionID');
 
-
-
-
+        $question = getOneQuestion($questionID);
+        include('views/view-question.php');
+        break;
     }
 
     case 'display_question_form':{
-        $userEmail = filter_input(INPUT_GET, 'userEmail');
-
-        session_start();
-        $_SESSION['userEmail'] = $userEmail;
         include('views/new-question-form.php');
         break;
     }
     case 'create_new_question':{
-        session_start();
-        $userEmail = $_SESSION['userEmail'];
+
+        $userEmail = $_COOKIE['login'];
 
 
         $questionName = filter_input(INPUT_POST, 'questionName');
@@ -130,12 +134,18 @@ switch($action){
         }
         else{
            createNewQuestion($userEmail, $questionName, $questionBody, $skillsString);
-           header("Location: .?action=display_questions&userEmail=$userEmail");
+           header("Location: .?action=display_questions");
 
         }
 
         break;
+    }
+    case 'logout':{
+        session_destroy();
+        unset($_COOKIE);
+        setcookie('login', "", time() - (3600), "/");
 
+        header("Location: .?action=display_login");
     }
 
 

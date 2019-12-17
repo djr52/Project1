@@ -28,7 +28,7 @@
 
         <br>
         <div>
-            Birthday: <input type="text" name="birthDay" class="text-container">
+            Birthday: <input type="date" name="birthDay" class="text-container">
         </div>
 
         <br>

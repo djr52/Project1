@@ -17,9 +17,10 @@ function getQuestionsByEmail($emailAddress){
 function createNewQuestion($emailAddress, $questionName, $questionBody, $skillsString){
     global $db;
     $query = 'INSERT INTO questions
-            (owneremail, title, body, skills)
+            (owneremail, createddate, title, body, skills)
             VALUES
-            (:email, :title, :body, :skills) ';
+            (:email, CURRENT_TIME, :title, :body, :skills) ';
+
     $statement = $db->prepare($query);
 
     $statement->bindValue(':email', $emailAddress);
@@ -28,11 +29,9 @@ function createNewQuestion($emailAddress, $questionName, $questionBody, $skillsS
     $statement->bindValue(':skills', $skillsString);
 
     $statement->execute();
-    //$firstName = getFirstName($emailAddress);
-    //$lastName = getLastName($emailAddress);
+
 
     $statement->closeCursor();
-    //return $emailAddress;
 
 }
 function deleteQuestion($questionID){
@@ -48,17 +47,30 @@ function deleteQuestion($questionID){
 
 function getOneQuestion($questionID){
     global $db;
-    $query = 'SELECT FROM questions
+    $query = 'SELECT * FROM questions
                 WHERE id = :questionID';
     $statement = $db->prepare($query);
     $statement->bindValue(':questionID', $questionID);
     $statement->execute();
 
-    $question = $statement->fetch();
+    $question = $statement->fetchAll();
 
     $statement->closeCursor();
 
 
     return $question;
+
+}
+function getAllQuestions(){
+    global $db;
+    $query = 'SELECT * FROM questions';
+    $statement = $db->prepare($query);
+
+    $statement->execute();
+
+    $questions = $statement->fetchAll();
+
+    $statement->closeCursor();
+    return $questions;
 
 }
